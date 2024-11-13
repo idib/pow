@@ -1,0 +1,19 @@
+name: pow
+services:
+  client:
+    build:
+      context: ../
+      dockerfile: ./docker/client/Dockerfile
+    command:
+      - "-server"
+      - "server:3333"
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ../
+      dockerfile: ./docker/server/Dockerfile
+    command:
+      - "-port"
+      - "3333"
